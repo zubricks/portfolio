@@ -1,14 +1,15 @@
 import type { CollectionConfig } from 'payload'
 
-import { anyone } from '../access/anyone'
-import { authenticated } from '../access/authenticated'
-import { Archive } from '../blocks/ArchiveBlock/config'
-import { CallToAction } from '../blocks/CallToAction/config'
-import { Content } from '../blocks/Content/config'
-import { FormBlock } from '../blocks/Form/config'
-import { MediaBlock } from '../blocks/MediaBlock/config'
-import { ProjectArchive } from '../blocks/ProjectArchive/config'
+import { anyone } from '../../access/anyone'
+import { authenticated } from '../../access/authenticated'
+import { Archive } from '../../blocks/ArchiveBlock/config'
+import { CallToAction } from '../../blocks/CallToAction/config'
+import { Content } from '../../blocks/Content/config'
+import { FormBlock } from '../../blocks/Form/config'
+import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { ProjectArchive } from '../../blocks/ProjectArchive/config'
 import { slugField } from 'payload'
+import { revalidateProject, revalidateDelete } from './hooks/revalidateProject'
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -80,4 +81,8 @@ export const Projects: CollectionConfig = {
       position: undefined,
     }),
   ],
+  hooks: {
+    afterChange: [revalidateProject],
+    afterDelete: [revalidateDelete],
+  },
 }
