@@ -28,7 +28,7 @@ export const ProjectArchiveBlock: React.FC<
           return (
             <Link key={project.id} href={`/projects/${slug}`} className="block">
               <Media
-                imgClassName="w-full border border-border rounded-[0.8rem]"
+                imgClassName="w-full rounded-[0.8rem]"
                 resource={media}
               />
               {media.caption && (
