@@ -29,13 +29,13 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        className="relative z-50 hover:cursor-pointer text-black"
+        className="relative z-50 hover:cursor-pointer text-current"
       >
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
 
       <div
-        className={`fixed inset-0 z-30 bg-amber-50 flex flex-col items-center justify-center transition-opacity duration-300 ${
+        className={`fixed inset-0 z-30 bg-amber-50 dark:bg-black flex flex-col items-center justify-center transition-opacity duration-300 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -45,7 +45,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
               key={i}
               {...link}
               appearance="link"
-              className="!text-black text-4xl font-heading no-underline hover:no-underline"
+              className="!text-black dark:!text-white text-4xl font-heading no-underline hover:no-underline"
             />
           ))}
         </nav>

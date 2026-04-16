@@ -51,7 +51,7 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
       .filter(Boolean) ?? []
 
   return (
-    <article className="pt-16 bg-amber-50">
+    <article className="pt-16 bg-amber-50 dark:bg-black">
       <PageClient />
 
       <PayloadRedirects disableNotFound url={url} />

@@ -11,7 +11,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       <div className="container">
         {richText && (
           <RichText
-            className="mb-0 [&_h1]:text-6xl [&_h1]:md:text-8xl [&_h1]:lg:text-9xl [&_h1]:leading-none [&_h2]:text-5xl [&_h2]:md:text-7xl [&_h2]:lg:text-8xl [&_h2]:leading-none [&_p]:text-xl [&_p]:md:text-2xl"
+            className="mb-0 [&_*]:!text-black [&_h1]:text-6xl [&_h1]:md:text-8xl [&_h1]:lg:text-9xl [&_h1]:leading-none [&_h2]:text-5xl [&_h2]:md:text-7xl [&_h2]:lg:text-8xl [&_h2]:leading-none [&_p]:text-xl [&_p]:md:text-2xl"
             data={richText}
             enableGutter={false}
           />
@@ -24,7 +24,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
                   key={i}
                   size="lg"
                   {...link}
-                  className="bg-[#1a1a1a] text-[#a2f4b5] hover:bg-[#333] px-6 py-3 text-base"
+                  className="bg-[#1a1a1a] !text-[#a2f4b5] hover:bg-[#333] px-6 py-3 text-base"
                 />
               )
             })}

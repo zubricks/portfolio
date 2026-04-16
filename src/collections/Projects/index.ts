@@ -8,6 +8,7 @@ import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { ProjectArchive } from '../../blocks/ProjectArchive/config'
+import { ReusableContentBlock } from '../../blocks/ReusableContent/config'
 import { slugField } from 'payload'
 import { revalidateProject, revalidateDelete } from './hooks/revalidateProject'
 
@@ -72,7 +73,7 @@ export const Projects: CollectionConfig = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, ProjectArchive],
+      blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, ProjectArchive, ReusableContentBlock],
       admin: {
         initCollapsed: true,
       },

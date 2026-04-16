@@ -8,6 +8,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { ProjectArchiveBlock } from '@/blocks/ProjectArchive/Component'
+import { ReusableContentBlockComponent } from '@/blocks/ReusableContent/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -16,10 +17,12 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   projectArchive: ProjectArchiveBlock,
+  reusableContentBlock: ReusableContentBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  blocks: any[]
 }> = (props) => {
   const { blocks } = props
 
@@ -32,12 +35,11 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType as keyof typeof blockComponents]
 
             if (Block) {
               return (
-                <div className={`my-16 ${index === blocks.length - 1 ? 'mb-0' : ''}`} key={index}>
-                  {/* @ts-expect-error there may be some mismatch between the expected types here */}
+                <div className={`my-16 ${index === blocks.length - 1 && blockType === 'cta' ? 'mb-0' : index === blocks.length - 1 ? 'mb-16' : ''}`} key={index}>
                   <Block {...block} disableInnerContainer />
                 </div>
               )

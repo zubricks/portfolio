@@ -32,14 +32,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   return (
     <header
-      className="relative z-20 bg-amber-50 sticky top-0"
+      className="relative z-20 bg-amber-50 dark:bg-black sticky top-0"
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <div className="container py-4 flex justify-between">
         <Link href="/">
-          <Logo loading="eager" priority="high" />
+          <Logo className="text-black dark:text-white" />
         </Link>
-        <div className="flex items-center gap-4 text-black">
+        <div className="flex items-center gap-4 text-black dark:text-white">
           <ThemeToggle />
           <HeaderNav data={data} />
         </div>
