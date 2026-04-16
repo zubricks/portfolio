@@ -1,25 +1,55 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import { Menu, X } from 'lucide-react'
 
 import type { Header as HeaderType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
-import Link from 'next/link'
-import { SearchIcon } from 'lucide-react'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
   const navItems = data?.navItems || []
 
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   return (
-    <nav className="flex gap-3 items-center">
-      {navItems.map(({ link }, i) => {
-        return <CMSLink key={i} {...link} appearance="link" />
-      })}
-      <Link href="/search">
-        <span className="sr-only">Search</span>
-        <SearchIcon className="w-5 text-primary" />
-      </Link>
-    </nav>
+    <>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        className="relative z-50 hover:cursor-pointer text-black"
+      >
+        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      </button>
+
+      <div
+        className={`fixed inset-0 z-30 bg-amber-50 flex flex-col items-center justify-center transition-opacity duration-300 ${
+          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <nav className="flex flex-col items-center gap-8">
+          {navItems.map(({ link }, i) => (
+            <CMSLink
+              key={i}
+              {...link}
+              appearance="link"
+              className="!text-black text-4xl font-heading no-underline hover:no-underline"
+            />
+          ))}
+        </nav>
+      </div>
+    </>
   )
 }
