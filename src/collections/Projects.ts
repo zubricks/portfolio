@@ -64,6 +64,11 @@ export const Projects: CollectionConfig = {
       max: 2100,
     },
     {
+      name: 'websiteUrl',
+      type: 'text',
+      label: 'Website URL',
+    },
+    {
       name: 'layout',
       type: 'blocks',
       blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, ProjectArchive],

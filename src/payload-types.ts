@@ -834,6 +834,7 @@ export interface Project {
   };
   featuredImage: string | Media;
   year: number;
+  websiteUrl?: string | null;
   layout?: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ProjectArchiveBlock)[] | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -1307,6 +1308,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   deliverables?: T;
   featuredImage?: T;
   year?: T;
+  websiteUrl?: T;
   layout?:
     | T
     | {

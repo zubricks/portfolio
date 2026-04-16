@@ -73,6 +73,14 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
             <h2 className="text-sm font-semibold uppercase tracking-wide mb-2">Year</h2>
             <p>{project.year}</p>
           </div>
+          {project.websiteUrl && (
+            <div>
+              <h2 className="text-sm font-semibold uppercase tracking-wide mb-2">Website</h2>
+              <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                {project.websiteUrl.replace(/^https?:\/\//, '')}
+              </a>
+            </div>
+          )}
         </div>
 
         {project.description && (
