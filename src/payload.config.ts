@@ -68,7 +68,7 @@ export default buildConfig({
   globals: [Header, Footer],
   plugins,
   email: resendAdapter({
-    defaultFromAddress: 'hello@seanzubrickas.com',
+    defaultFromAddress: 'hello@seanmzubrickas.com',
     defaultFromName: 'Sean Zubrickas',
     apiKey: process.env.RESEND_API_KEY || '',
   }),
